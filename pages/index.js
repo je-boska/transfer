@@ -9,8 +9,8 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <h1>TRANSFER</h1>
-      <p>test</p>
+      <h1 className='font-bold text-2xl m-8'>TRANSFER</h1>
+      <p className='m-8'>test</p>
     </div>
   )
 }
