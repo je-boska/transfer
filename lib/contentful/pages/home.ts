@@ -8,6 +8,7 @@ export async function getHomePage() {
       categoryCollection {
         items {
           engName
+          czName
         }
       }
     }

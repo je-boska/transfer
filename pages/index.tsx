@@ -1,10 +1,16 @@
 import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import { getHomePage } from '../lib/contentful/pages/home'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }: any) {
   return {
-    props: { allCategories: await getHomePage() },
+    props: {
+      allCategories: await getHomePage(),
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
     revalidate: 60 * 60,
   }
 }
@@ -12,7 +18,9 @@ export async function getStaticProps() {
 export default function Home({
   allCategories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(allCategories)
+  const { t } = useTranslation('common')
+  const { locale } = useRouter()
+
   return (
     <div>
       <Head>
@@ -22,10 +30,11 @@ export default function Home({
       </Head>
       <div className='m-8'>
         <h1 className='font-bold text-2xl mb-6'>TRANSFER</h1>
-        {allCategories.map(({ engName }, idx) => (
-          <p key={idx}>{engName}</p>
+        {allCategories.map(({ engName, czName }, idx) => (
+          <p key={idx}>{locale === 'en' ? engName : czName}</p>
         ))}
       </div>
+      <h1>{t('test')}</h1>
     </div>
   )
 }
