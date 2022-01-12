@@ -17,8 +17,7 @@ export type ErrorPayload = {
 }
 
 export type CategoryType = {
-  engName: string
-  czName: string
+  name: string
   linkedFrom: {
     articleCollection: {
       items: ArticleType[]
@@ -27,6 +26,5 @@ export type CategoryType = {
 }
 
 export type ArticleType = {
-  engTitle: string
-  czTitle: string
+  title: string
 }

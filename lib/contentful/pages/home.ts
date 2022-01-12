@@ -2,18 +2,22 @@ import { graphql } from '..'
 import { CategoryType } from '../../../types/shared'
 import { extractCollection } from '../../../util'
 
-export async function getHomePage() {
+export async function getHomePage(locale) {
+  if (locale === 'en') {
+    locale = 'en-US'
+  } else if (locale === 'cz') {
+    locale = 'cs'
+  }
+
   const HomePageQuery = /* GraphQL */ `
-    query HomePageQuery {
-      categoryCollection {
+    query HomePageQuery($locale: String) {
+      categoryCollection(locale: $locale) {
         items {
-          engName
-          czName
+          name
           linkedFrom {
             articleCollection {
               items {
-                engTitle
-                czTitle
+                title
               }
             }
           }
@@ -22,7 +26,7 @@ export async function getHomePage() {
     }
   `
 
-  const data = await graphql(HomePageQuery)
+  const data = await graphql(HomePageQuery, { variables: { locale } })
 
   return extractCollection<CategoryType>(data, 'categoryCollection')
 }
