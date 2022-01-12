@@ -1,5 +1,5 @@
 import { graphql } from '..'
-import { CategoryEntry } from '../../../types/shared'
+import { CategoryType } from '../../../types/shared'
 import { extractCollection } from '../../../util'
 
 export async function getHomePage() {
@@ -9,6 +9,14 @@ export async function getHomePage() {
         items {
           engName
           czName
+          linkedFrom {
+            articleCollection {
+              items {
+                engTitle
+                czTitle
+              }
+            }
+          }
         }
       }
     }
@@ -16,5 +24,5 @@ export async function getHomePage() {
 
   const data = await graphql(HomePageQuery)
 
-  return extractCollection<CategoryEntry>(data, 'categoryCollection')
+  return extractCollection<CategoryType>(data, 'categoryCollection')
 }

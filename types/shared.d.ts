@@ -16,7 +16,17 @@ export type ErrorPayload = {
   errors: ErrorPayloadMessage[]
 }
 
-export type CategoryEntry = {
+export type CategoryType = {
   engName: string
   czName: string
+  linkedFrom: {
+    articleCollection: {
+      items: ArticleType[]
+    }
+  }
+}
+
+export type ArticleType = {
+  engTitle: string
+  czTitle: string
 }
