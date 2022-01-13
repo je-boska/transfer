@@ -1,3 +1,4 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getArticlePageSingle } from '../lib/contentful/pages/article'
 import { getArticlePathsToPreRender } from '../lib/contentful/paths'
 import { renderRichTextWithImages } from '../lib/rich-text'
@@ -30,7 +31,7 @@ export async function getStaticProps({ locale, params }: any) {
   const article = await getArticlePageSingle(params.slug, locale)
 
   return {
-    props: { article },
+    props: { article, ...(await serverSideTranslations(locale, ['common'])) },
     revalidate: 60 * 60,
   }
 }

@@ -1,17 +1,12 @@
 import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import { getHomePage } from '../lib/contentful/pages/home'
-import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useRouter } from 'next/router'
 import Category from '../components/Category'
 
 export default function Home({
   allCategories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { t } = useTranslation('common')
-  const { locale } = useRouter()
-
   return (
     <div>
       <Head>

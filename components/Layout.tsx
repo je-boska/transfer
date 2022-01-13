@@ -1,13 +1,5 @@
-import Footer from './Footer'
-import LocaleSwitch from './LocaleSwitch'
-
 const Layout = ({ children }) => {
-  return (
-    <div>
-      <LocaleSwitch />
-      {children}
-    </div>
-  )
+  return <div className='min-h-full'>{children}</div>
 }
 
 export default Layout
