@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { getArticlePageSingle } from '../lib/contentful/pages/article'
 import { getArticlePathsToPreRender } from '../lib/contentful/paths'
 import { renderRichTextWithImages } from '../lib/rich-text'
@@ -11,9 +10,6 @@ interface ArticleProps {
 export default function Article({ article }: ArticleProps) {
   return (
     <>
-      <p>
-        <Link href='/'>Home</Link>
-      </p>
       <div className='container p-8'>
         <h1 className='text-3xl mb-4'>{article.title}</h1>
         <div className='rich-text'>

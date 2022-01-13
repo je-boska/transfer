@@ -23,7 +23,6 @@ export default function Home({
         {allCategories.map((category, idx) => (
           <Category category={category} key={idx} />
         ))}
-        {/* <p className='font-bold mt-8'>{t('test')}</p> */}
       </div>
     </div>
   )

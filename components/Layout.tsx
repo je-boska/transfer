@@ -1,3 +1,4 @@
+import Footer from './Footer'
 import LocaleSwitch from './LocaleSwitch'
 
 const Layout = ({ children }) => {
