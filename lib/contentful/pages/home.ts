@@ -18,6 +18,7 @@ export async function getHomePage(locale) {
             articleCollection {
               items {
                 title
+                slug
               }
             }
           }

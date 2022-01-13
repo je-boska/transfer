@@ -4,18 +4,7 @@ import { getHomePage } from '../lib/contentful/pages/home'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useRouter } from 'next/router'
-import LocaleSwitch from '../components/LocaleSwitch'
 import Category from '../components/Category'
-
-export async function getStaticProps({ locale }: any) {
-  return {
-    props: {
-      allCategories: await getHomePage(locale),
-      ...(await serverSideTranslations(locale, ['common'])),
-    },
-    revalidate: 60 * 60,
-  }
-}
 
 export default function Home({
   allCategories,
@@ -30,7 +19,6 @@ export default function Home({
         <meta name='description' content='Transfer' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <LocaleSwitch />
       <div className='m-8'>
         {allCategories.map((category, idx) => (
           <Category category={category} key={idx} />
@@ -39,4 +27,14 @@ export default function Home({
       </div>
     </div>
   )
+}
+
+export async function getStaticProps({ locale }: any) {
+  return {
+    props: {
+      allCategories: await getHomePage(locale),
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+    revalidate: 60 * 60,
+  }
 }

@@ -27,4 +27,24 @@ export type CategoryType = {
 
 export type ArticleType = {
   title: string
+  slug: string
+  content: Content
+  categoryCollection: {
+    items: CategoryType[]
+  }
+}
+
+export interface Asset {
+  sys: { id: string }
+  contentType: string
+  title: string
+  description: string
+  url: string
+  width: number
+  height: number
+}
+
+export interface Content {
+  json: Document
+  links?: Links
 }

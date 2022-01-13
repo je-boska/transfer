@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import { CategoryType } from '../types/shared'
 
@@ -7,7 +7,6 @@ interface CategoryProps {
 }
 
 export default function Category({ category }: CategoryProps) {
-  const { locale } = useRouter()
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const {
     name,
@@ -23,10 +22,12 @@ export default function Category({ category }: CategoryProps) {
         {name}
       </h1>
       {isOpen &&
-        articleCollection.items.map(({ title }, idx) => (
-          <div key={idx} className='mb-6'>
-            <p>{title}</p>
-          </div>
+        articleCollection.items.map(({ title, slug }, idx) => (
+          <Link key={idx} href={`/${slug}`} passHref>
+            <div className='mb-6 cursor-pointer'>
+              <p>{title}</p>
+            </div>
+          </Link>
         ))}
     </div>
   )

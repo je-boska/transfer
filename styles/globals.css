@@ -18,3 +18,54 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* Rich text styles */
+
+.rich-text h1 {
+  @apply text-6xl font-bold mb-6;
+}
+
+.rich-text h2 {
+  @apply text-4xl font-bold mb-6;
+}
+
+.rich-text h3 {
+  @apply text-3xl font-bold mb-6;
+}
+
+.rich-text h4 {
+  @apply text-2xl font-bold mb-6;
+}
+
+.rich-text h5 {
+  @apply text-xl font-bold mb-6;
+}
+
+.rich-text h6 {
+  @apply text-lg font-bold mb-6;
+}
+
+.rich-text p {
+  @apply text-base font-sans mb-6;
+}
+
+.rich-text ul {
+  @apply list-disc ml-6 mb-6;
+}
+
+.rich-text ul p {
+  @apply mb-0;
+}
+
+.rich-text a {
+  @apply text-blue-500;
+}
+
+.rich-text video,
+.rich-text img {
+  @apply mb-6;
+}
+
+.rich-text hr {
+  @apply mb-6 border-black;
+}
