@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  background-color: rgba(0, 0, 0, 0.1);
+  @apply bg-transferGray;
 }
 
 html,
@@ -74,16 +74,18 @@ a {
   @apply mb-6 border-black;
 }
 
+/* Text drop-shadow animation */
+
 @keyframes shadow-anim {
   0% {
     filter: drop-shadow(0 0 0rem black);
   }
   50% {
-    filter: drop-shadow(0 0rem 2rem crimson);
+    filter: drop-shadow(0 0rem 4rem crimson);
   }
   100% {
-    filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
-      drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+    filter: drop-shadow(0 0px 20px rgb(0 0 0 / 0.08))
+      drop-shadow(0 0px 10px rgb(0 0 0 / 0.2));
   }
 }
 
@@ -96,4 +98,6 @@ a {
 
 .animate-shadow {
   transition: all;
+  filter: drop-shadow(0 0px 20px rgb(0 0 0 / 0.08))
+    drop-shadow(0 0px 10px rgb(0 0 0 / 0.2));
 }

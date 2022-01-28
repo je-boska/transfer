@@ -26,13 +26,10 @@ export default function Category({ category, currentCategory }: CategoryProps) {
             setIsOpen(false);
           }
         }}
-        className={cx(
-          "animate-shadow drop-shadow-lg text-5xl mb-12 font-extrabold",
-          {
-            "text-black": isOpen,
-            "text-white": !isOpen,
-          }
-        )}
+        className={cx("text-5xl mb-12 font-extrabold", {
+          "text-transferPurple opacity-30": isOpen,
+          "text-white animate-shadow": !isOpen,
+        })}
       >
         {name}
       </h1>
