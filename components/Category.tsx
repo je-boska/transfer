@@ -1,34 +1,49 @@
-import Link from 'next/link'
-import React, { useState } from 'react'
-import { CategoryType } from '../types/shared'
+import Link from "next/link";
+import cx from "classnames";
+import React, { useState } from "react";
+import { CategoryType } from "../types/shared";
 
 interface CategoryProps {
-  category: CategoryType
+  category: CategoryType;
+  currentCategory: string | null;
 }
 
-export default function Category({ category }: CategoryProps) {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+export default function Category({ category, currentCategory }: CategoryProps) {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const {
     name,
     linkedFrom: { articleCollection },
-  } = category
+  } = category;
 
   return (
     <div>
       <h1
-        onClick={() => setIsOpen(!isOpen)}
-        className='cursor-pointer text-3xl mb-4'
+        onClick={() => {
+          if (!currentCategory) {
+            setIsOpen(true);
+          }
+          if (currentCategory) {
+            setIsOpen(false);
+          }
+        }}
+        className={cx(
+          "animate-shadow drop-shadow-lg text-5xl mb-12 font-extrabold",
+          {
+            "text-black": isOpen,
+            "text-white": !isOpen,
+          }
+        )}
       >
         {name}
       </h1>
       {isOpen &&
         articleCollection.items.map(({ title, slug }, idx) => (
           <Link key={idx} href={`/${slug}`} passHref>
-            <div className='mb-6 cursor-pointer'>
+            <div className="ml-12 mb-6 cursor-pointer">
               <p>{title}</p>
             </div>
           </Link>
         ))}
     </div>
-  )
+  );
 }
