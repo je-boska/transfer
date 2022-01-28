@@ -38,7 +38,7 @@ export default function Home({
                 (currentCategory === null &&
                   category.name === hoveredCategory) ||
                 category.name === currentCategory,
-              "opacity-0":
+              "opacity-0 cursor-default":
                 (currentCategory !== null &&
                   category.name !== currentCategory) ||
                 (currentCategory !== null &&
