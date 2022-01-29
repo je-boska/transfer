@@ -23,16 +23,9 @@ export default function Home({
         {allCategories.map((category, idx) => (
           <div
             key={idx}
-            onClick={() => {
-              if (currentCategory === category.name) {
-                setCurrentCategory(null);
-              } else if (!currentCategory) {
-                setCurrentCategory(category.name);
-              }
-            }}
             onMouseEnter={() => setHoveredCategory(category.name)}
             onMouseLeave={() => setHoveredCategory(null)}
-            className={cx("transition-all", {
+            className={cx("transition-all duration-500", {
               "opacity-100 cursor-pointer":
                 (currentCategory === null && hoveredCategory === null) ||
                 (currentCategory === null &&
@@ -46,7 +39,11 @@ export default function Home({
                   category.name !== currentCategory),
             })}
           >
-            <Category currentCategory={currentCategory} category={category} />
+            <Category
+              currentCategory={currentCategory}
+              setCurrentCategory={setCurrentCategory}
+              category={category}
+            />
           </div>
         ))}
       </div>

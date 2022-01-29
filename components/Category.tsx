@@ -1,14 +1,19 @@
 import Link from "next/link";
 import cx from "classnames";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { CategoryType } from "../types/shared";
 
 interface CategoryProps {
   category: CategoryType;
   currentCategory: string | null;
+  setCurrentCategory: Dispatch<SetStateAction<string>>;
 }
 
-export default function Category({ category, currentCategory }: CategoryProps) {
+export default function Category({
+  category,
+  currentCategory,
+  setCurrentCategory,
+}: CategoryProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const {
     name,
@@ -16,7 +21,7 @@ export default function Category({ category, currentCategory }: CategoryProps) {
   } = category;
 
   return (
-    <div>
+    <div className="mb-4">
       <h1
         onClick={() => {
           if (!currentCategory) {
@@ -24,6 +29,11 @@ export default function Category({ category, currentCategory }: CategoryProps) {
           }
           if (currentCategory) {
             setIsOpen(false);
+          }
+          if (currentCategory === category.name) {
+            setCurrentCategory(null);
+          } else if (!currentCategory) {
+            setCurrentCategory(category.name);
           }
         }}
         className={cx("text-5xl mb-12 font-extrabold", {
