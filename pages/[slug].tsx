@@ -14,7 +14,7 @@ export default function Article({ article }: ArticleProps) {
       <div className="container p-8">
         <h1 className="text-3xl mb-4">{article.title}</h1>
         <div className="rich-text mb-20">
-          {renderRichTextWithImages(article.content)}
+          {article.content && renderRichTextWithImages(article.content)}
         </div>
       </div>
     </>
