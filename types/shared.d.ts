@@ -44,6 +44,11 @@ export type ArtistType = {
   name: string;
   slug: string;
   bio: Content;
+  linkedFrom: {
+    articleCollection: {
+      items: ArticleType[];
+    };
+  };
 };
 
 export interface Asset {

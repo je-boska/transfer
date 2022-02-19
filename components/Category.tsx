@@ -22,8 +22,6 @@ export default function Category({
     linkedFrom: { articleCollection, artistCollection },
   } = category;
 
-  console.log(articleCollection);
-
   return (
     <div className="mb-4">
       <h1

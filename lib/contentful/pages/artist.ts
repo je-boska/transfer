@@ -27,6 +27,14 @@ export async function getArtistPageSingle(slug: string, locale: string) {
               }
             }
           }
+          linkedFrom {
+            articleCollection {
+              items {
+                title
+                slug
+              }
+            }
+          }
         }
       }
     }
