@@ -35,8 +35,11 @@ export type ArticleType = {
   title: string;
   slug: string;
   content: Content;
-  categoryCollection: {
+  categoriesCollection: {
     items: CategoryType[];
+  };
+  artistsCollection: {
+    items: ArtistType[];
   };
 };
 

@@ -35,6 +35,12 @@ export async function getArticlePageSingle(slug: string, locale: string) {
               description
             }
           }
+          artistsCollection {
+            items {
+              name
+              slug
+            }
+          }
         }
       }
     }
