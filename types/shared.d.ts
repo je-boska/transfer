@@ -25,6 +25,9 @@ export type CategoryType = {
     articleCollection: {
       items: ArticleType[];
     };
+    artistCollection: {
+      items: ArtistType[];
+    };
   };
 };
 
@@ -35,6 +38,12 @@ export type ArticleType = {
   categoryCollection: {
     items: CategoryType[];
   };
+};
+
+export type ArtistType = {
+  name: string;
+  slug: string;
+  bio: Content;
 };
 
 export interface Asset {

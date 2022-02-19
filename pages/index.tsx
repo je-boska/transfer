@@ -19,31 +19,32 @@ export default function Home({
         <meta name="description" content="Transfer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="m-8">
+      <div className="m-8 mt-20">
         {allCategories.map((category, idx) => (
-          <div
-            key={idx}
-            onMouseEnter={() => setHoveredCategory(category.name)}
-            onMouseLeave={() => setHoveredCategory(null)}
-            className={cx("transition-all duration-500", {
-              "opacity-100 cursor-pointer":
-                (currentCategory === null && hoveredCategory === null) ||
-                (currentCategory === null &&
-                  category.name === hoveredCategory) ||
-                category.name === currentCategory,
-              "opacity-0 cursor-default":
-                (currentCategory !== null &&
-                  category.name !== currentCategory) ||
-                (currentCategory !== null &&
-                  category.name !== hoveredCategory &&
-                  category.name !== currentCategory),
-            })}
-          >
-            <Category
-              currentCategory={currentCategory}
-              setCurrentCategory={setCurrentCategory}
-              category={category}
-            />
+          <div key={idx}>
+            <div
+              onMouseEnter={() => setHoveredCategory(category.name)}
+              onMouseLeave={() => setHoveredCategory(null)}
+              className={cx("transition-all duration-500 inline-block", {
+                "opacity-100 cursor-pointer":
+                  (currentCategory === null && hoveredCategory === null) ||
+                  (currentCategory === null &&
+                    category.name === hoveredCategory) ||
+                  category.name === currentCategory,
+                "opacity-0 cursor-default":
+                  (currentCategory !== null &&
+                    category.name !== currentCategory) ||
+                  (currentCategory !== null &&
+                    category.name !== hoveredCategory &&
+                    category.name !== currentCategory),
+              })}
+            >
+              <Category
+                currentCategory={currentCategory}
+                setCurrentCategory={setCurrentCategory}
+                category={category}
+              />
+            </div>
           </div>
         ))}
       </div>

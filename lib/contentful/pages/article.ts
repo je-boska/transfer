@@ -1,13 +1,10 @@
 import { graphql } from "..";
 import { ArticleType } from "../../../types/shared";
-import { extractCollectionItem } from "../../../util";
+import { extractCollectionItem, parseLocaleName } from "../../../util";
 
 export async function getArticlePageSingle(slug: string, locale: string) {
-  if (locale === "en") {
-    locale = "en-US";
-  } else if (locale === "cz") {
-    locale = "cs";
-  }
+  const parsedLocale = parseLocaleName(locale);
+
   const ArticlePageSingleQuery = /* GraphQL */ `
     query ArticlePageSingleQuery($slug: String, $locale: String) {
       articleCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
@@ -43,7 +40,7 @@ export async function getArticlePageSingle(slug: string, locale: string) {
     }
   `;
   const data = await graphql(ArticlePageSingleQuery, {
-    variables: { slug, locale },
+    variables: { slug, locale: parsedLocale },
   });
 
   return extractCollectionItem<ArticleType>(data, "articleCollection");

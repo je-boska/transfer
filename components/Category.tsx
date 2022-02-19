@@ -19,8 +19,10 @@ export default function Category({
   const {
     name,
     description,
-    linkedFrom: { articleCollection },
+    linkedFrom: { articleCollection, artistCollection },
   } = category;
+
+  console.log(articleCollection);
 
   return (
     <div className="mb-4">
@@ -46,13 +48,20 @@ export default function Category({
         {name}
       </h1>
       {isOpen && (
-        <div className="flex">
-          {description && <div className="max-w-lg pr-6">{description}</div>}
+        <div className="flex gap-6 cursor-default">
+          {description && <div className="max-w-lg">{description}</div>}
           <div>
             {articleCollection.items.map(({ title, slug }, idx) => (
               <Link key={idx} href={`/${slug}`} passHref>
                 <div className="mb-6 cursor-pointer">
                   <p>{title}</p>
+                </div>
+              </Link>
+            ))}
+            {artistCollection.items.map(({ name, slug }, idx) => (
+              <Link key={idx} href={`/artists/${slug}`} passHref>
+                <div className="mb-6 cursor-pointer">
+                  <p>{name}</p>
                 </div>
               </Link>
             ))}

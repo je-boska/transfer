@@ -1,17 +1,13 @@
 import { graphql } from "..";
 import { CategoryType } from "../../../types/shared";
-import { extractCollection } from "../../../util";
+import { extractCollection, parseLocaleName } from "../../../util";
 
 export async function getHomePage(locale) {
-  if (locale === "en") {
-    locale = "en-US";
-  } else if (locale === "cz") {
-    locale = "cs";
-  }
+  const parsedLocale = parseLocaleName(locale);
 
   const HomePageQuery = /* GraphQL */ `
     query HomePageQuery($locale: String) {
-      categoryCollection(locale: $locale) {
+      categoryCollection(locale: $locale, limit: 50) {
         items {
           name
           description
@@ -22,13 +18,20 @@ export async function getHomePage(locale) {
                 slug
               }
             }
+            artistCollection {
+              items {
+                name
+                slug
+              }
+            }
           }
         }
       }
     }
   `;
-
-  const data = await graphql(HomePageQuery, { variables: { locale } });
+  const data = await graphql(HomePageQuery, {
+    variables: { locale: parsedLocale },
+  });
 
   return extractCollection<CategoryType>(data, "categoryCollection");
 }
