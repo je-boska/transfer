@@ -2,6 +2,7 @@ import Link from "next/link";
 import cx from "classnames";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { CategoryType } from "../types/shared";
+import { renderRichTextWithImages } from "../lib/rich-text";
 
 interface CategoryProps {
   category: CategoryType;
@@ -17,6 +18,7 @@ export default function Category({
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const {
     name,
+    description,
     linkedFrom: { articleCollection },
   } = category;
 
@@ -37,20 +39,26 @@ export default function Category({
           }
         }}
         className={cx("text-5xl mb-12 font-extrabold", {
-          "text-transferPurple opacity-30": isOpen,
+          "text-black opacity-30": isOpen,
           "text-white animate-shadow": !isOpen,
         })}
       >
         {name}
       </h1>
-      {isOpen &&
-        articleCollection.items.map(({ title, slug }, idx) => (
-          <Link key={idx} href={`/${slug}`} passHref>
-            <div className="ml-12 mb-6 cursor-pointer">
-              <p>{title}</p>
-            </div>
-          </Link>
-        ))}
+      {isOpen && (
+        <div className="flex">
+          {description && <div className="max-w-lg pr-6">{description}</div>}
+          <div>
+            {articleCollection.items.map(({ title, slug }, idx) => (
+              <Link key={idx} href={`/${slug}`} passHref>
+                <div className="mb-6 cursor-pointer">
+                  <p>{title}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

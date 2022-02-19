@@ -1,52 +1,53 @@
-import { Document } from '@contentful/rich-text-types'
+import { Document } from "@contentful/rich-text-types";
 
 export type ErrorPayloadMessage = {
-  message: string
+  message: string;
   extensions: {
     contentful: {
-      code: string
-      requestId: string
+      code: string;
+      requestId: string;
       details: {
-        maximumCost: number
-        cost: number
-      }
-    }
-  }
-}
+        maximumCost: number;
+        cost: number;
+      };
+    };
+  };
+};
 
 export type ErrorPayload = {
-  errors: ErrorPayloadMessage[]
-}
+  errors: ErrorPayloadMessage[];
+};
 
 export type CategoryType = {
-  name: string
+  name: string;
+  description: string;
   linkedFrom: {
     articleCollection: {
-      items: ArticleType[]
-    }
-  }
-}
+      items: ArticleType[];
+    };
+  };
+};
 
 export type ArticleType = {
-  title: string
-  slug: string
-  content: Content
+  title: string;
+  slug: string;
+  content: Content;
   categoryCollection: {
-    items: CategoryType[]
-  }
-}
+    items: CategoryType[];
+  };
+};
 
 export interface Asset {
-  sys: { id: string }
-  contentType: string
-  title: string
-  description: string
-  url: string
-  width: number
-  height: number
+  sys: { id: string };
+  contentType: string;
+  title: string;
+  description: string;
+  url: string;
+  width: number;
+  height: number;
 }
 
 export interface Content {
-  json: Document
-  links?: Links
+  json: Document;
+  links?: Links;
 }

@@ -1,12 +1,12 @@
-import { graphql } from '..'
-import { ArticleType } from '../../../types/shared'
-import { extractCollectionItem } from '../../../util'
+import { graphql } from "..";
+import { ArticleType } from "../../../types/shared";
+import { extractCollectionItem } from "../../../util";
 
 export async function getArticlePageSingle(slug: string, locale: string) {
-  if (locale === 'en') {
-    locale = 'en-US'
-  } else if (locale === 'cz') {
-    locale = 'cs'
+  if (locale === "en") {
+    locale = "en-US";
+  } else if (locale === "cz") {
+    locale = "cs";
   }
   const ArticlePageSingleQuery = /* GraphQL */ `
     query ArticlePageSingleQuery($slug: String, $locale: String) {
@@ -35,15 +35,16 @@ export async function getArticlePageSingle(slug: string, locale: string) {
           categoriesCollection {
             items {
               name
+              description
             }
           }
         }
       }
     }
-  `
+  `;
   const data = await graphql(ArticlePageSingleQuery, {
     variables: { slug, locale },
-  })
+  });
 
-  return extractCollectionItem<ArticleType>(data, 'articleCollection')
+  return extractCollectionItem<ArticleType>(data, "articleCollection");
 }
