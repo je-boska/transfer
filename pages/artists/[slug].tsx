@@ -19,7 +19,7 @@ export default function Artist({ artist }: ArtistProps) {
         </div>
       )}
       {artist.linkedFrom.articleCollection.items.map(({ title, slug }, idx) => (
-        <Link key={idx} href={`/${slug}`} passHref>
+        <Link key={idx} href={`/articles/${slug}`} passHref>
           <div className="cursor-pointer">
             <h2>{title}</h2>
           </div>

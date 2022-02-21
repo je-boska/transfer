@@ -41,6 +41,9 @@ export type ArticleType = {
   artistsCollection: {
     items: ArtistType[];
   };
+  mediaCollection: {
+    items: Asset[];
+  };
 };
 
 export type ArtistType = {

@@ -43,11 +43,35 @@ export async function getArticlePageSingle(slug: string, locale: string) {
           }
         }
       }
+      media: articleCollection(
+        where: { slug: $slug }
+        limit: 1
+        locale: "en-US"
+      ) {
+        items {
+          mediaCollection {
+            items {
+              sys {
+                id
+              }
+              title
+              description
+              url
+              width
+              height
+            }
+          }
+        }
+      }
     }
   `;
   const data = await graphql(ArticlePageSingleQuery, {
     variables: { slug, locale: parsedLocale },
   });
 
-  return extractCollectionItem<ArticleType>(data, "articleCollection");
+  return {
+    article: extractCollectionItem<ArticleType>(data, "articleCollection"),
+    media: extractCollectionItem<ArticleType>(data, "media").mediaCollection
+      .items,
+  };
 }

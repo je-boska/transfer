@@ -1,16 +1,19 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Image from "next/image";
 import Link from "next/link";
-import { getArticlePageSingle } from "../lib/contentful/pages/article";
-import { getArticlePathsToPreRender } from "../lib/contentful/paths";
-import { renderRichTextWithImages } from "../lib/rich-text";
-import { ArticleType } from "../types/shared";
+import { getArticlePageSingle } from "../../lib/contentful/pages/article";
+import { getArticlePathsToPreRender } from "../../lib/contentful/paths";
+import { renderRichTextWithImages } from "../../lib/rich-text";
+import { ArticleType, Asset } from "../../types/shared";
 
 interface ArticleProps {
   article: ArticleType;
+  media: Asset[];
 }
 
-export default function Article({ article }: ArticleProps) {
-  const { title, content, artistsCollection } = article;
+export default function Article({ article, media }: ArticleProps) {
+  const { title, content, artistsCollection, mediaCollection } = article;
+
   return (
     <>
       <div className="container p-8">
@@ -25,6 +28,13 @@ export default function Article({ article }: ArticleProps) {
         <div className="rich-text mb-20">
           {content && renderRichTextWithImages(content)}
         </div>
+        <div>
+          {media.map(({ url }, idx) => (
+            <div key={idx} className="relative w-full h-20">
+              <Image src={url} alt={title} layout="fill" objectFit="cover" />
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
@@ -37,10 +47,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ locale, params }: any) {
-  const article = await getArticlePageSingle(params.slug, locale);
+  const { article, media } = await getArticlePageSingle(params.slug, locale);
 
   return {
-    props: { article, ...(await serverSideTranslations(locale, ["common"])) },
+    props: {
+      article,
+      media,
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
     revalidate: 60 * 60,
   };
 }

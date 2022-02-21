@@ -50,7 +50,7 @@ export default function Category({
           {description && <div className="max-w-lg">{description}</div>}
           <div>
             {articleCollection.items.map(({ title, slug }, idx) => (
-              <Link key={idx} href={`/${slug}`} passHref>
+              <Link key={idx} href={`/articles/${slug}`} passHref>
                 <div className="mb-6 cursor-pointer">
                   <p>{title}</p>
                 </div>
