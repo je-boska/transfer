@@ -18,31 +18,39 @@ export default function Article({ article, media }: ArticleProps) {
     <>
       <div className="flex">
         <div className="w-1/2 h-screen overflow-scroll p-8 pt-16 border-r border-black">
-          <h1 className="text-3xl font-semibold mb-4">{title}</h1>
-          <div className="mb-4">
-            {artistsCollection.items.map(({ name, slug }, idx) => (
-              <Link key={idx} href={`/artists/${slug}`} passHref>
-                <p className="cursor-pointer font-bold">{name}</p>
-              </Link>
-            ))}
-          </div>
-          <div className="rich-text max-w-xl mb-20">
-            {content && renderRichTextWithImages(content)}
-          </div>
+          <article className="max-w-xl mx-auto">
+            <h1 className="text-3xl font-semibold mb-4">{title}</h1>
+            <div className="mb-4">
+              {artistsCollection.items.map(({ name, slug }, idx) => (
+                <Link key={idx} href={`/artists/${slug}`} passHref>
+                  <p className="cursor-pointer font-bold">{name}</p>
+                </Link>
+              ))}
+            </div>
+            <div className="rich-text mb-20">
+              {content && renderRichTextWithImages(content)}
+            </div>
+          </article>
         </div>
         <div className="w-1/2 h-screen overflow-scroll bg-white">
-          {media.map(({ url, width, height }, idx) => (
-            <div key={idx} className="relative p-16">
-              <Image
-                src={url}
-                alt={title}
-                layout="intrinsic"
-                objectFit="contain"
-                width={width}
-                height={height}
-              />
-            </div>
-          ))}
+          {media.map(({ url, width, height, contentType }, idx) => {
+            if (contentType.includes("video")) {
+              return <video className="w-full" key={idx} src={url} controls />;
+            }
+            if (contentType.includes("image")) {
+              return (
+                <div key={idx} className="relative">
+                  <Image
+                    src={url}
+                    alt={title}
+                    layout="responsive"
+                    width={width}
+                    height={height}
+                  />
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     </>

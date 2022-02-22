@@ -26,7 +26,7 @@ export function renderRichTextWithImages(content: Content) {
 
           const asset = getAssetById(id, blockAssets);
 
-          if (asset?.contentType.includes("image")) {
+          if (asset?.contentType?.includes("image")) {
             return (
               <div className="mb-6">
                 <Image
@@ -41,7 +41,7 @@ export function renderRichTextWithImages(content: Content) {
             );
           }
 
-          if (asset?.contentType.includes("video")) {
+          if (asset?.contentType?.includes("video")) {
             return <video src={asset.url} />;
           }
 

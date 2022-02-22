@@ -59,6 +59,7 @@ export async function getArticlePageSingle(slug: string, locale: string) {
               url
               width
               height
+              contentType
             }
           }
         }
