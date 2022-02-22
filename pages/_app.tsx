@@ -7,7 +7,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <Header />
-      <div className="mb-10"></div>
       <Component {...pageProps} />
     </Layout>
   );

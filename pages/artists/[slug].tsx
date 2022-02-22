@@ -11,7 +11,7 @@ interface ArtistProps {
 
 export default function Artist({ artist }: ArtistProps) {
   return (
-    <div className="container p-8">
+    <div className="container p-8 mt-10">
       <div className="text-3xl mb-4">{artist.name}</div>
       {artist.bio && (
         <div className="rich-text mb-20">
