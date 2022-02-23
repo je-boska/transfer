@@ -9,6 +9,16 @@ export async function getArtistPageSingle(slug: string, locale: string) {
       artistCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
         items {
           name
+          image {
+            sys {
+              id
+            }
+            title
+            description
+            url
+            width
+            height
+          }
           bio {
             json
             links {

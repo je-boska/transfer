@@ -1,4 +1,5 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Image from "next/image";
 import Link from "next/link";
 import { getArtistPageSingle } from "../../lib/contentful/pages/artist";
 import { getArtistPathsToPreRender } from "../../lib/contentful/paths";
@@ -10,17 +11,19 @@ interface ArtistProps {
 }
 
 export default function Artist({ artist }: ArtistProps) {
+  const { name, bio, image, linkedFrom } = artist;
   return (
     <div className="container p-8 mt-10">
-      <div className="text-3xl mb-4">{artist.name}</div>
-      {artist.bio && (
-        <div className="rich-text mb-20">
-          {renderRichTextWithImages(artist.bio)}
-        </div>
+      <div className="text-3xl mb-8">{name}</div>
+      <div className="relative w-full h-96 mb-8">
+        <Image src={image.url} alt={name} layout="fill" objectFit="cover" />
+      </div>
+      {bio && (
+        <div className="rich-text mb-20">{renderRichTextWithImages(bio)}</div>
       )}
-      {artist.linkedFrom.articleCollection.items.map(({ title, slug }, idx) => (
+      {linkedFrom.articleCollection.items.map(({ title, slug }, idx) => (
         <Link key={idx} href={`/articles/${slug}`} passHref>
-          <div className="cursor-pointer">
+          <div className="cursor-pointer font-bold">
             <h2>{title}</h2>
           </div>
         </Link>
