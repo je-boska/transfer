@@ -1,5 +1,5 @@
 import { graphql } from "..";
-import { ArtistType } from "../../../types/shared";
+import { ArtistType, Asset } from "../../../types/shared";
 import { extractCollectionItem, parseLocaleName } from "../../../util";
 
 export async function getArtistPageSingle(slug: string, locale: string) {
@@ -9,16 +9,6 @@ export async function getArtistPageSingle(slug: string, locale: string) {
       artistCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
         items {
           name
-          image {
-            sys {
-              id
-            }
-            title
-            description
-            url
-            width
-            height
-          }
           bio {
             json
             links {
@@ -47,11 +37,33 @@ export async function getArtistPageSingle(slug: string, locale: string) {
           }
         }
       }
+
+      image: artistCollection(
+        where: { slug: $slug }
+        limit: 1
+        locale: "en-US"
+      ) {
+        items {
+          image {
+            sys {
+              id
+            }
+            title
+            description
+            url
+            width
+            height
+          }
+        }
+      }
     }
   `;
   const data = await graphql(ArtistPageSingleQuery, {
     variables: { slug, locale: parsedLocale },
   });
 
-  return extractCollectionItem<ArtistType>(data, "artistCollection");
+  return {
+    artist: extractCollectionItem<ArtistType>(data, "artistCollection"),
+    image: extractCollectionItem<{ image: Asset }>(data, "image").image,
+  };
 }

@@ -49,7 +49,6 @@ export type ArticleType = {
 export type ArtistType = {
   name: string;
   slug: string;
-  image: Asset;
   bio: Content;
   linkedFrom: {
     articleCollection: {
