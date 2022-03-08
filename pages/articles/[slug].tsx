@@ -19,7 +19,7 @@ export default function Article({ article, media }: ArticleProps) {
       <div className="flex">
         <div className="w-1/2 h-screen overflow-scroll p-8 pt-16 border-r border-black">
           <article className="max-w-xl mx-auto">
-            <h1 className="text-3xl font-semibold mb-4">{title}</h1>
+            <h1 className="text-xl mb-4">{title.toUpperCase()}</h1>
             <div className="mb-4">
               {artistsCollection.items.map(({ name, slug }, idx) => (
                 <Link key={idx} href={`/artists/${slug}`} passHref>

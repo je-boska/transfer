@@ -15,7 +15,7 @@ export default function Home({
   return (
     <div>
       <Head>
-        <title>Transfer</title>
+        <title>TRANSFER</title>
         <meta name="description" content="Transfer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -25,7 +25,7 @@ export default function Home({
             <div
               onMouseEnter={() => setHoveredCategory(category.name)}
               onMouseLeave={() => setHoveredCategory(null)}
-              className={cx("transition-all duration-500 inline-block", {
+              className={cx("inline-block", {
                 "opacity-100 cursor-pointer":
                   (currentCategory === null && hoveredCategory === null) ||
                   (currentCategory === null &&

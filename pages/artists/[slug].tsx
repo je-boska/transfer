@@ -16,7 +16,7 @@ export default function Artist({ artist, image }: ArtistProps) {
 
   return (
     <div className="container p-8 mt-10">
-      <div className="text-3xl mb-8">{name}</div>
+      <div className="text-xl mb-8">{name.toUpperCase()}</div>
       <div className="relative w-full h-96 mb-8">
         <Image src={image.url} alt={name} layout="fill" objectFit="cover" />
       </div>

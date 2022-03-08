@@ -38,12 +38,9 @@ export default function Category({
             setCurrentCategory(category.name);
           }
         }}
-        className={cx("text-5xl mb-12 font-extrabold", {
-          "text-black opacity-30": isOpen,
-          "text-white animate-shadow": !isOpen,
-        })}
+        className={cx("text-xl mb-12 font-extrabold", {})}
       >
-        {name}
+        {name.toUpperCase()}
       </h1>
       {isOpen && (
         <div className="flex gap-6 cursor-default">

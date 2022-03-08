@@ -10,7 +10,7 @@ export default function Header() {
       <ul className="flex justify-items-stretch gap-8 px-8 py-4">
         <li>
           <Link href="/" passHref>
-            <h1 className="cursor-pointer font-bold">Transfer</h1>
+            <h1 className="cursor-pointer text-xl">TRANSFER</h1>
           </Link>
         </li>
       </ul>
