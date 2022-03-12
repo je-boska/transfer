@@ -10,7 +10,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Monument-Grotesk", -apple-system, BlinkMacSystemFont, Segoe UI,
+  font-family: 'Neue-Haas-Grotesk', -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
     sans-serif;
 }
@@ -27,8 +27,8 @@ a {
 /* Fonts */
 
 @font-face {
-  font-family: "Monument-Grotesk";
-  src: url("/fonts/ABCMonumentGrotesk-Regular-Trial.woff2") format("woff2");
+  font-family: 'Neue-Haas-Grotesk';
+  src: url('/fonts/NHaasGroteskTXPro-55Rg.ttf') format('truetype');
 }
 
 /* Rich text styles */
