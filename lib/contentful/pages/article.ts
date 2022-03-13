@@ -5,10 +5,8 @@ import { extractCollectionItem, parseLocaleName } from '../../../util';
 export async function getArticlePageSingle(slug: string, locale: string) {
   const parsedLocale = parseLocaleName(locale);
 
-  console.log('locale:', locale);
-
   const ArticlePageSingleQuery = /* GraphQL */ `
-    query ArticlePageSingleQuery($slug: String, $locale: String) {
+    query ArticlePageSingleQuery($slug: String) {
       articleCollection(where: { slug: $slug }, limit: 1, locale: "en-US") {
         items {
           title
@@ -70,7 +68,7 @@ export async function getArticlePageSingle(slug: string, locale: string) {
     }
   `;
   const data = await graphql(ArticlePageSingleQuery, {
-    variables: { slug, locale: parsedLocale },
+    variables: { slug },
   });
 
   return {
