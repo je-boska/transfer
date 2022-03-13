@@ -9,7 +9,7 @@ export async function getArticlePageSingle(slug: string, locale: string) {
 
   const ArticlePageSingleQuery = /* GraphQL */ `
     query ArticlePageSingleQuery($slug: String, $locale: String) {
-      articleCollection(where: { slug: $slug }, limit: 1, locale: $locale) {
+      articleCollection(where: { slug: $slug }, limit: 1, locale: "en-US") {
         items {
           title
           slug
