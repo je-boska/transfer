@@ -1,4 +1,4 @@
-import { Document } from "@contentful/rich-text-types";
+import { Document } from '@contentful/rich-text-types';
 
 export type ErrorPayloadMessage = {
   message: string;
@@ -44,6 +44,7 @@ export type ArticleType = {
   mediaCollection: {
     items: Asset[];
   };
+  videoLink: string;
 };
 
 export type ArtistType = {

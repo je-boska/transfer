@@ -1,6 +1,6 @@
-import { graphql } from "..";
-import { ArticleType } from "../../../types/shared";
-import { extractCollectionItem, parseLocaleName } from "../../../util";
+import { graphql } from '..';
+import { ArticleType } from '../../../types/shared';
+import { extractCollectionItem, parseLocaleName } from '../../../util';
 
 export async function getArticlePageSingle(slug: string, locale: string) {
   const parsedLocale = parseLocaleName(locale);
@@ -11,6 +11,7 @@ export async function getArticlePageSingle(slug: string, locale: string) {
         items {
           title
           slug
+          videoLink
           content {
             json
             links {
@@ -71,8 +72,8 @@ export async function getArticlePageSingle(slug: string, locale: string) {
   });
 
   return {
-    article: extractCollectionItem<ArticleType>(data, "articleCollection"),
-    media: extractCollectionItem<ArticleType>(data, "media").mediaCollection
+    article: extractCollectionItem<ArticleType>(data, 'articleCollection'),
+    media: extractCollectionItem<ArticleType>(data, 'media').mediaCollection
       .items,
   };
 }

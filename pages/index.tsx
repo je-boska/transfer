@@ -19,7 +19,7 @@ export default function Home({
         <meta name='description' content='Transfer' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div className='m-4 m-8 mt-20'>
+      <div className='m-4 mt-20'>
         {allCategories.map((category, idx) => (
           <div key={idx} className='max-w-4xl mx-auto'>
             <div
