@@ -44,7 +44,7 @@ export type ArticleType = {
   mediaCollection: {
     items: Asset[];
   };
-  videoLink: string;
+  videoLink?: string;
 };
 
 export type ArtistType = {
