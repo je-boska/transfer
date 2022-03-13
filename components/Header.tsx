@@ -1,34 +1,40 @@
 import React from 'react';
+import cx from 'classnames';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
 import LocaleSwitch from './LocaleSwitch';
 
 export default function Header() {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const pathname = router.pathname;
 
   return (
-    <header className='bg-transferGray md:bg-transparent fixed h-14 grid grid-cols-2 top-0 w-full z-10'>
-      <div className='px-4 py-3 lg:p-4 text-xl'>
-        {router.pathname === '/' ? (
-          <Link href='/' passHref>
-            <h1 className='cursor-pointer'>{t('transfer').toUpperCase()}</h1>
-          </Link>
+    <header
+      className={cx(
+        'bg-transferGray xl:bg-transparent fixed h-14 top-0 w-full z-10',
+        {
+          'md:w-1/2 lg:w-[60%] md:border-r border-black': pathname !== '/',
+        }
+      )}
+    >
+      <div className='flex justify-between m-4 text-xl'>
+        {pathname === '/' ? (
+          <h1 className='w-1/2'>{t('transfer').toUpperCase()}</h1>
         ) : (
-          <div className='inline-flex pr-2 gap-2 bg-transferGray -translate-y-1'>
+          <div className='-translate-y-1'>
             <button onClick={() => router.back()}>←</button>
             <button
-              className='mb-0.5 text-2xl'
+              className='mb-0.5 ml-2 text-2xl'
               onClick={() => router.push('/')}
             >
               ⌂
             </button>
           </div>
         )}
-      </div>
-      <div className='p-3 lg:p-4 justify-self-end xl:fixed xl:bottom-0 xl:left-0'>
-        <LocaleSwitch />
+        <div>
+          <LocaleSwitch />
+        </div>
       </div>
     </header>
   );

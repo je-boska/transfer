@@ -18,7 +18,7 @@ export default function Article({ article, media }: ArticleProps) {
   return (
     <>
       <div className='flex flex-col md:flex-row'>
-        <div className='md:w-1/2 lg:w-2/3 md:h-screen md:overflow-scroll p-4 pt-16 lg:p-8 lg:pt-16 border-r md:border-black'>
+        <div className='md:w-1/2 lg:w-[60%] md:h-screen md:overflow-scroll p-4 pt-16 border-r md:border-black'>
           <article className='max-w-xl mx-auto'>
             <h1 className='text-xl mb-2'>{title.toUpperCase()}</h1>
             <div className='mb-12'>
@@ -35,7 +35,7 @@ export default function Article({ article, media }: ArticleProps) {
             </div>
           </article>
         </div>
-        <div className='md:w-1/2 lg:w-1/3 md:h-screen md:overflow-y-scroll'>
+        <div className='md:w-1/2 lg:w-[40%] md:h-screen md:overflow-y-scroll'>
           {videoLink && (
             <div className='relative w-full pt-[56.25%]'>
               <ReactPlayer
@@ -50,14 +50,18 @@ export default function Article({ article, media }: ArticleProps) {
           {media.map(({ url, width, height, contentType }, idx) => {
             if (contentType.includes('image')) {
               return (
-                <div key={idx} className='relative'>
-                  <Image
-                    src={url}
-                    alt={title}
-                    layout='responsive'
-                    width={width}
-                    height={height}
-                  />
+                <div key={idx} className='relative cursor-pointer'>
+                  <Link href={url} passHref>
+                    <a target='_blank'>
+                      <Image
+                        src={url}
+                        alt={title}
+                        layout='responsive'
+                        width={width}
+                        height={height}
+                      />
+                    </a>
+                  </Link>
                 </div>
               );
             }
