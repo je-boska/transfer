@@ -13,7 +13,6 @@ export async function getArticlePageSingle(slug: string, locale: string) {
         items {
           title
           slug
-          videoLink
           content {
             json
             links {
