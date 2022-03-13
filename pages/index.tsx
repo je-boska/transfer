@@ -1,10 +1,10 @@
-import cx from "classnames";
-import { InferGetStaticPropsType } from "next";
-import Head from "next/head";
-import { getHomePage } from "../lib/contentful/pages/home";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Category from "../components/Category";
-import { useState } from "react";
+import cx from 'classnames';
+import { InferGetStaticPropsType } from 'next';
+import Head from 'next/head';
+import { getHomePage } from '../lib/contentful/pages/home';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Category from '../components/Category';
+import { useState } from 'react';
 
 export default function Home({
   allCategories,
@@ -16,22 +16,22 @@ export default function Home({
     <div>
       <Head>
         <title>TRANSFER</title>
-        <meta name="description" content="Transfer" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name='description' content='Transfer' />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div className="m-8 mt-20">
+      <div className='m-4 m-8 mt-20'>
         {allCategories.map((category, idx) => (
-          <div key={idx}>
+          <div key={idx} className='max-w-4xl mx-auto'>
             <div
               onMouseEnter={() => setHoveredCategory(category.name)}
               onMouseLeave={() => setHoveredCategory(null)}
-              className={cx("inline-block", {
-                "opacity-100 cursor-pointer":
+              className={cx('inline-block', {
+                'opacity-100 cursor-pointer':
                   (currentCategory === null && hoveredCategory === null) ||
                   (currentCategory === null &&
                     category.name === hoveredCategory) ||
                   category.name === currentCategory,
-                "opacity-0 cursor-default":
+                'opacity-0 cursor-default':
                   (currentCategory !== null &&
                     category.name !== currentCategory) ||
                   (currentCategory !== null &&
@@ -56,7 +56,7 @@ export async function getStaticProps({ locale }: any) {
   return {
     props: {
       allCategories: await getHomePage(locale),
-      ...(await serverSideTranslations(locale, ["common"])),
+      ...(await serverSideTranslations(locale, ['common'])),
     },
     revalidate: 60 * 60,
   };

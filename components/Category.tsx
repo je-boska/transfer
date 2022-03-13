@@ -1,8 +1,8 @@
-import Link from "next/link";
-import cx from "classnames";
-import React, { Dispatch, SetStateAction, useState } from "react";
-import { CategoryType } from "../types/shared";
-import { renderRichTextWithImages } from "../lib/rich-text";
+import Link from 'next/link';
+import cx from 'classnames';
+import React, { Dispatch, SetStateAction, useState } from 'react';
+import { CategoryType } from '../types/shared';
+import { renderRichTextWithImages } from '../lib/rich-text';
 
 interface CategoryProps {
   category: CategoryType;
@@ -23,7 +23,7 @@ export default function Category({
   } = category;
 
   return (
-    <div className="mb-4">
+    <div className='mb-4'>
       <h1
         onClick={() => {
           if (!currentCategory) {
@@ -38,24 +38,24 @@ export default function Category({
             setCurrentCategory(category.name);
           }
         }}
-        className={cx("text-xl mb-12 font-extrabold", {})}
+        className={cx('text-xl mb-12 font-extrabold', {})}
       >
         {name.toUpperCase()}
       </h1>
       {isOpen && (
-        <div className="flex gap-6 cursor-default">
-          {description && <div className="max-w-lg">{description}</div>}
+        <div className='flex flex-col md:flex-row gap-6 cursor-default'>
+          {description && <div className='max-w-lg'>{description}</div>}
           <div>
             {articleCollection.items.map(({ title, slug }, idx) => (
               <Link key={idx} href={`/articles/${slug}`} passHref>
-                <div className="mb-6 cursor-pointer">
+                <div className='mb-6 cursor-pointer'>
                   <p>{title}</p>
                 </div>
               </Link>
             ))}
             {artistCollection.items.map(({ name, slug }, idx) => (
               <Link key={idx} href={`/artists/${slug}`} passHref>
-                <div className="mb-6 cursor-pointer">
+                <div className='mb-6 cursor-pointer'>
                   <p>{name}</p>
                 </div>
               </Link>

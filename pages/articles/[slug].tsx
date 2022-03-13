@@ -16,15 +16,17 @@ export default function Article({ article, media }: ArticleProps) {
 
   return (
     <>
-      <div className='flex'>
-        <div className='w-1/2 h-screen overflow-scroll p-8 pt-16 border-r border-black'>
+      <div className='flex flex-col md:flex-row'>
+        <div className='md:w-1/2 lg:w-2/3 md:h-screen md:overflow-scroll p-4 pt-16 md:p-8 md:pt-16 border-r md:border-black'>
           <article className='max-w-xl mx-auto'>
-            <h1 className='text-xl mb-4'>{title.toUpperCase()}</h1>
-            <div className='mb-4'>
+            <h1 className='text-xl mb-2'>{title.toUpperCase()}</h1>
+            <div className='mb-12'>
               {artistsCollection.items.map(({ name, slug }, idx) => (
-                <Link key={idx} href={`/artists/${slug}`} passHref>
-                  <p className='cursor-pointer font-bold'>{name}</p>
-                </Link>
+                <p key={idx} className='font-bold text-right'>
+                  <Link href={`/artists/${slug}`} passHref>
+                    <span className='cursor-pointer'>{name}</span>
+                  </Link>
+                </p>
               ))}
             </div>
             <div className='rich-text mb-20'>
@@ -32,7 +34,7 @@ export default function Article({ article, media }: ArticleProps) {
             </div>
           </article>
         </div>
-        <div className='w-1/2 h-screen overflow-scroll'>
+        <div className='md:w-1/2 lg:w-1/3 md:h-screen md:overflow-scroll'>
           {media.map(({ url, width, height, contentType }, idx) => {
             if (contentType.includes('video')) {
               return <video className='w-full' key={idx} src={url} controls />;
