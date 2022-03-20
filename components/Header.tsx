@@ -14,7 +14,8 @@ export default function Header() {
       className={cx(
         'bg-transferGray xl:bg-transparent fixed h-14 top-0 w-full z-10',
         {
-          'md:w-1/2 lg:w-[60%] md:border-r border-black': pathname !== '/',
+          'md:w-1/2 lg:w-[60%] md:border-r border-black':
+            pathname.includes('/articles'),
         }
       )}
     >
