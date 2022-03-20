@@ -7,7 +7,7 @@ const ItemBox = ({ category }) => {
       {category && (
         <div className='cursor-default grid m-4 mt-20 lg:h-[calc(100vh-10rem)]'>
           {category.description && (
-            <div className='max-w-lg mx-auto mb-20 whitespace-normal order-2 lg:order-1'>
+            <div className='max-w-lg mx-auto mb-20 self-center whitespace-normal order-2 lg:order-1'>
               {category.description}
             </div>
           )}
