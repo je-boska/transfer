@@ -84,9 +84,7 @@ export async function getStaticProps({ locale, params }: any) {
   const { article } = await getArticlePageSingle(params.slug, locale);
 
   return {
-    props: {
-      article,
-    },
+    props: { article },
     revalidate: 60 * 60,
   };
 }

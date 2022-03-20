@@ -3,14 +3,15 @@ import Link from 'next/link';
 import { getArtistPageSingle } from '../../lib/contentful/pages/artist';
 import { getArtistPathsToPreRender } from '../../lib/contentful/paths';
 import { renderRichTextWithImages } from '../../lib/rich-text';
-import { ArtistType } from '../../types/shared';
+import { ArtistType, Asset } from '../../types/shared';
 
 interface ArtistProps {
   artist: ArtistType;
+  image: Asset;
 }
 
-export default function Artist({ artist }: ArtistProps) {
-  const { name, bio, image, linkedFrom } = artist;
+export default function Artist({ artist, image }: ArtistProps) {
+  const { name, bio, linkedFrom } = artist;
 
   return (
     <div className='container p-8 mt-10'>
@@ -41,12 +42,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ locale, params }: any) {
-  const { artist } = await getArtistPageSingle(params.slug, locale);
+  const { artist, image } = await getArtistPageSingle(params.slug, locale);
 
   return {
-    props: {
-      artist,
-    },
+    props: { artist, image },
     revalidate: 60 * 60,
   };
 }
