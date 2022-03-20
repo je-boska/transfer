@@ -109,3 +109,33 @@ a {
   filter: drop-shadow(0 0px 20px rgb(0 0 0 / 0.08))
     drop-shadow(0 0px 10px rgb(0 0 0 / 0.2));
 }
+
+/* Category placement */
+
+.category {
+  @apply whitespace-nowrap;
+}
+
+.category:first-of-type {
+  @apply col-start-1 row-start-3;
+}
+
+.category:nth-of-type(2) {
+  @apply col-start-5 row-start-4;
+}
+
+.category:nth-of-type(3) {
+  @apply col-start-10 row-start-5;
+}
+
+.category:nth-of-type(4) {
+  @apply col-start-2 row-start-2;
+}
+
+.category:nth-of-type(5) {
+  @apply col-start-3 row-start-6;
+}
+
+.category:nth-of-type(6) {
+  @apply col-start-7 row-start-7;
+}

@@ -16,15 +16,7 @@ export default function Category({
   currentCategory,
   setCurrentCategory,
 }: CategoryProps) {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const {
-    name,
-    description,
-    linkedFrom: { articleCollection, artistCollection },
-  } = category;
-
-  const totalLength =
-    articleCollection.items.length + artistCollection.items.length;
+  const { name } = category;
 
   return (
     <div className='relative mb-4'>
@@ -32,12 +24,6 @@ export default function Category({
       <h1
         id={`category${name}`}
         onClick={() => {
-          if (!currentCategory) {
-            setIsOpen(true);
-          }
-          if (currentCategory) {
-            setIsOpen(false);
-          }
           if (currentCategory === category.name) {
             setCurrentCategory(null);
           } else if (!currentCategory) {
@@ -48,31 +34,6 @@ export default function Category({
       >
         {name.toUpperCase()}
       </h1>
-      {isOpen && (
-        <div className='cursor-default'>
-          <div className='flex flex-wrap gap-8'>
-            {articleCollection.items.map(({ title, slug }, idx) => (
-              <Item
-                key={idx}
-                idx={idx}
-                title={title}
-                link={`/articles/${slug}`}
-                categoryName={`category${name}`}
-              />
-            ))}
-            {artistCollection.items.map(({ name: title, slug }, idx) => (
-              <Item
-                key={idx + articleCollection.items.length}
-                idx={idx + articleCollection.items.length}
-                title={title}
-                link={`/artists/${slug}`}
-                categoryName={`category${name}`}
-              />
-            ))}
-          </div>
-          {description && <div className='max-w-lg'>{description}</div>}
-        </div>
-      )}
     </div>
   );
 }
