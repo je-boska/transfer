@@ -20,7 +20,7 @@ export default function Category({
 
   return (
     <div className='relative mb-4'>
-      <div id={`category${name}`} className='absolute left-20 top-8'></div>
+      <div id={`category${name}`} className='absolute left-20 top-4'></div>
       <h1
         onClick={() => {
           if (currentCategory === category.name) {
@@ -33,6 +33,17 @@ export default function Category({
       >
         {name.toUpperCase()}
       </h1>
+      <Xarrow
+        key={`category${name}`}
+        start={'transfer'}
+        end={`category${name}`}
+        color='rgba(0, 0, 0, 0.1)'
+        startAnchor='bottom'
+        endAnchor='left'
+        strokeWidth={1}
+        curveness={0}
+        showHead={false}
+      />
     </div>
   );
 }

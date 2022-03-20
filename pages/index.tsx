@@ -19,10 +19,11 @@ export default function Home({
         <meta name='description' content='Transfer' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
+      <div id='transfer' className='absolute top-14 left-10 lg:left-20'></div>
       <div className='lg:grid grid-cols-[2fr,3fr] gap-20'>
-        <div className='m-4 mt-20 grid lg:grid-cols-12 lg:grid-rows-[1fr,1fr,1fr,1fr,1fr,1fr,1fr] lg:h-[calc(100vh-10rem)]'>
+        <div className='m-4 mt-20 w-1/2 lg:w-full grid grid-cols-12 grid-rows-[1fr,1fr,1fr,1fr,1fr,1fr,1fr] lg:h-[calc(100vh-10rem)]'>
           {allCategories.map((category, idx) => (
-            <div key={idx} className='category cursor-pointer z-10'>
+            <div key={idx} className='category cursor-pointer'>
               {(currentCategory === null ||
                 currentCategory === category.name) && (
                 <Category
