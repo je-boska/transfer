@@ -19,6 +19,15 @@ export default function Article({ article, media }: ArticleProps) {
   const router = useRouter();
   console.log(router.query);
 
+  if (!article) {
+    return (
+      <div>
+        <p>there was an error</p>
+        <p>slug: {router.query}</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className='flex flex-col md:flex-row'>
