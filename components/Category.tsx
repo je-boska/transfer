@@ -22,7 +22,6 @@ export default function Category({
     <div className='relative mb-4'>
       <div id={`category${name}`} className='absolute left-20 top-8'></div>
       <h1
-        id={`category${name}`}
         onClick={() => {
           if (currentCategory === category.name) {
             setCurrentCategory(null);
@@ -30,7 +29,7 @@ export default function Category({
             setCurrentCategory(category.name);
           }
         }}
-        className={cx('text-xl mb-12 font-extrabold', {})}
+        className={cx('text-xl mb-12 lg:mb-0 pr-2 font-extrabold', {})}
       >
         {name.toUpperCase()}
       </h1>

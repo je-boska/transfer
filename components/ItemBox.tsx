@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Item from './Item';
 
 const ItemBox = ({ category }) => {
-  console.log(category);
   return (
     <>
       {category && (
-        <div className='cursor-default grid w-1/2 m-4 mt-20 h-[calc(100vh-10rem)]'>
+        <div className='cursor-default grid m-4 mt-20 lg:h-[calc(100vh-10rem)]'>
           {category.description && (
-            <div className='max-w-lg mb-20 whitespace-normal'>
+            <div className='max-w-lg mx-auto mb-20 whitespace-normal order-2 lg:order-1'>
               {category.description}
             </div>
           )}
-          <div className='flex flex-wrap justify-evenly max-w-lg gap-8'>
+          <div className='flex flex-wrap justify-evenly gap-2 mb-10 lg:mb-0 order-1 lg:order-2'>
             {category.linkedFrom.articleCollection.items.map(
               ({ title, slug }, idx) => (
                 <Item
