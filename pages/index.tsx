@@ -21,7 +21,7 @@ export default function Home({
       </Head>
       <div className='m-4 mt-20'>
         {allCategories.map((category, idx) => (
-          <div key={idx} className='max-w-4xl mx-auto'>
+          <div key={idx}>
             <div
               onMouseEnter={() => setHoveredCategory(category.name)}
               onMouseLeave={() => setHoveredCategory(null)}

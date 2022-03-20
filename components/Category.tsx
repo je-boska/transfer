@@ -2,7 +2,8 @@ import Link from 'next/link';
 import cx from 'classnames';
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { CategoryType } from '../types/shared';
-import { renderRichTextWithImages } from '../lib/rich-text';
+import Xarrow from 'react-xarrows';
+import Item from './Item';
 
 interface CategoryProps {
   category: CategoryType;
@@ -22,9 +23,14 @@ export default function Category({
     linkedFrom: { articleCollection, artistCollection },
   } = category;
 
+  const totalLength =
+    articleCollection.items.length + artistCollection.items.length;
+
   return (
-    <div className='mb-4'>
+    <div className='relative mb-4'>
+      <div id={`category${name}`} className='absolute left-20 top-8'></div>
       <h1
+        id={`category${name}`}
         onClick={() => {
           if (!currentCategory) {
             setIsOpen(true);
@@ -43,24 +49,28 @@ export default function Category({
         {name.toUpperCase()}
       </h1>
       {isOpen && (
-        <div className='flex flex-col md:flex-row gap-6 cursor-default'>
-          {description && <div className='max-w-lg'>{description}</div>}
-          <div>
+        <div className='cursor-default'>
+          <div className='flex flex-wrap gap-8'>
             {articleCollection.items.map(({ title, slug }, idx) => (
-              <Link key={idx} href={`/articles/${slug}`} passHref>
-                <div className='mb-6 cursor-pointer'>
-                  <p>{title}</p>
-                </div>
-              </Link>
+              <Item
+                key={idx}
+                idx={idx}
+                title={title}
+                link={`/articles/${slug}`}
+                categoryName={`category${name}`}
+              />
             ))}
-            {artistCollection.items.map(({ name, slug }, idx) => (
-              <Link key={idx} href={`/artists/${slug}`} passHref>
-                <div className='mb-6 cursor-pointer'>
-                  <p>{name}</p>
-                </div>
-              </Link>
+            {artistCollection.items.map(({ name: title, slug }, idx) => (
+              <Item
+                key={idx + articleCollection.items.length}
+                idx={idx + articleCollection.items.length}
+                title={title}
+                link={`/artists/${slug}`}
+                categoryName={`category${name}`}
+              />
             ))}
           </div>
+          {description && <div className='max-w-lg'>{description}</div>}
         </div>
       )}
     </div>
