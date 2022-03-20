@@ -1,7 +1,6 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import ReactPlayer from 'react-player';
 import { getArticlePageSingle } from '../../lib/contentful/pages/article';
 import { getArticlePathsToPreRender } from '../../lib/contentful/paths';
@@ -15,18 +14,6 @@ interface ArticleProps {
 
 export default function Article({ article, media }: ArticleProps) {
   const { title, videoLink, content, artistsCollection } = article;
-
-  const router = useRouter();
-  console.log(router.query);
-
-  if (!article) {
-    return (
-      <div>
-        <p>there was an error</p>
-        <p>slug: {router.query}</p>
-      </div>
-    );
-  }
 
   return (
     <>
