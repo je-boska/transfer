@@ -1,4 +1,3 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Image from 'next/image';
 import Link from 'next/link';
 import ReactPlayer from 'react-player';
@@ -87,7 +86,6 @@ export async function getStaticProps({ locale, params }: any) {
   return {
     props: {
       article,
-      ...(await serverSideTranslations(locale, ['common'])),
     },
     revalidate: 60 * 60,
   };

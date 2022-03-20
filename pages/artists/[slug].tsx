@@ -1,4 +1,3 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getArtistPageSingle } from '../../lib/contentful/pages/artist';
@@ -47,7 +46,6 @@ export async function getStaticProps({ locale, params }: any) {
   return {
     props: {
       artist,
-      ...(await serverSideTranslations(locale, ['common'])),
     },
     revalidate: 60 * 60,
   };
