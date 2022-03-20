@@ -11,7 +11,7 @@ interface ArticleProps {
 }
 
 export default function Article({ article }: ArticleProps) {
-  const { title, videoLink, content, mediaCollection, artistsCollection } =
+  const { title, videoLinks, content, mediaCollection, artistsCollection } =
     article;
 
   return (
@@ -35,17 +35,18 @@ export default function Article({ article }: ArticleProps) {
           </article>
         </div>
         <div className='md:w-1/2 lg:w-[40%] md:h-screen md:overflow-y-scroll'>
-          {videoLink && (
-            <div className='relative w-full pt-[56.25%]'>
-              <ReactPlayer
-                width='100%'
-                height='100%'
-                className='absolute top-0 left-0'
-                controls
-                url={videoLink}
-              />
-            </div>
-          )}
+          {videoLinks &&
+            videoLinks.map((videoLink, idx) => (
+              <div key={idx} className='relative w-full pt-[56.25%]'>
+                <ReactPlayer
+                  width='100%'
+                  height='100%'
+                  className='absolute top-0 left-0'
+                  controls
+                  url={videoLink}
+                />
+              </div>
+            ))}
           {mediaCollection &&
             mediaCollection.items.map(
               ({ url, width, height, contentType }, idx) => {
