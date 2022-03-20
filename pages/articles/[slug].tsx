@@ -5,15 +5,15 @@ import ReactPlayer from 'react-player';
 import { getArticlePageSingle } from '../../lib/contentful/pages/article';
 import { getArticlePathsToPreRender } from '../../lib/contentful/paths';
 import { renderRichTextWithImages } from '../../lib/rich-text';
-import { ArticleType, Asset } from '../../types/shared';
+import { ArticleType } from '../../types/shared';
 
 interface ArticleProps {
   article: ArticleType;
-  media: Asset[];
 }
 
-export default function Article({ article, media }: ArticleProps) {
-  const { title, videoLink, content, artistsCollection } = article;
+export default function Article({ article }: ArticleProps) {
+  const { title, videoLink, content, mediaCollection, artistsCollection } =
+    article;
 
   return (
     <>
@@ -47,25 +47,28 @@ export default function Article({ article, media }: ArticleProps) {
               />
             </div>
           )}
-          {media.map(({ url, width, height, contentType }, idx) => {
-            if (contentType.includes('image')) {
-              return (
-                <div key={idx} className='relative cursor-pointer'>
-                  <Link href={url} passHref>
-                    <a target='_blank'>
-                      <Image
-                        src={url}
-                        alt={title}
-                        layout='responsive'
-                        width={width}
-                        height={height}
-                      />
-                    </a>
-                  </Link>
-                </div>
-              );
-            }
-          })}
+          {mediaCollection &&
+            mediaCollection.items.map(
+              ({ url, width, height, contentType }, idx) => {
+                if (contentType.includes('image')) {
+                  return (
+                    <div key={idx} className='relative cursor-pointer'>
+                      <Link href={url} passHref>
+                        <a target='_blank'>
+                          <Image
+                            src={url}
+                            alt={title}
+                            layout='responsive'
+                            width={width}
+                            height={height}
+                          />
+                        </a>
+                      </Link>
+                    </div>
+                  );
+                }
+              }
+            )}
         </div>
       </div>
     </>
@@ -79,12 +82,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ locale, params }: any) {
-  const { article, media } = await getArticlePageSingle(params.slug, locale);
+  const { article } = await getArticlePageSingle(params.slug, locale);
 
   return {
     props: {
       article,
-      media,
       ...(await serverSideTranslations(locale, ['common'])),
     },
     revalidate: 60 * 60,
