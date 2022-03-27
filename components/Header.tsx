@@ -19,7 +19,7 @@ export default function Header() {
         }
       )}
     >
-      <div className='flex justify-between m-4 text-xl'>
+      <div className='flex justify-between m-4 text-lg sm:text-xl'>
         {pathname === '/' ? (
           <h1 className='w-1/2 font-extrabold'>
             {t('transfer').toUpperCase()}

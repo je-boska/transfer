@@ -1,7 +1,6 @@
-import cx from 'classnames';
 import React, { Dispatch, SetStateAction } from 'react';
 import { CategoryType } from '../types/shared';
-import Xarrow from 'react-xarrows';
+import { ArcherElement } from 'react-archer';
 
 interface CategoryProps {
   category: CategoryType;
@@ -18,30 +17,30 @@ export default function Category({
 
   return (
     <div className='relative mb-4'>
-      <div id={`category${name}`} className='absolute left-12 top-4'></div>
-      <h1
-        onClick={() => {
-          if (currentCategory === category.name) {
-            setCurrentCategory(null);
-          } else if (!currentCategory) {
-            setCurrentCategory(category.name);
-          }
-        }}
-        className='text-base sm:text-xl mb-12 lg:mb-0 pr-2 font-extrabold cursor-pointer'
+      <ArcherElement
+        id={`category${name}`}
+        relations={[
+          {
+            targetId: 'transfer',
+            targetAnchor: 'bottom',
+            sourceAnchor: 'middle',
+          },
+        ]}
       >
-        {name.toUpperCase()}
-      </h1>
-      <Xarrow
-        key={`category${name}`}
-        start={'transfer'}
-        end={`category${name}`}
-        color='rgba(0, 0, 0, 0.1)'
-        startAnchor='bottom'
-        endAnchor='left'
-        strokeWidth={1}
-        curveness={0}
-        showHead={false}
-      />
+        <h1
+          id={`category${name}`}
+          onClick={() => {
+            if (currentCategory === category.name) {
+              setCurrentCategory(null);
+            } else if (!currentCategory) {
+              setCurrentCategory(category.name);
+            }
+          }}
+          className='text-base sm:text-xl mb-12 lg:mb-0 pr-2 w-24 font-extrabold cursor-pointer'
+        >
+          {name.toUpperCase()}
+        </h1>
+      </ArcherElement>
     </div>
   );
 }
