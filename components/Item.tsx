@@ -5,8 +5,8 @@ import Xarrow from 'react-xarrows';
 const Item = ({ title, link, categoryName, idx }) => {
   return (
     <Link key={idx} href={link} passHref>
-      <div className={`item mb-6 cursor-pointer`}>
-        <p id={`item${idx}`} className='font-bold pl-2'>
+      <div className='item mb-6'>
+        <p id={`item${idx}`} className='font-bold pl-2 cursor-pointer'>
           {title.toUpperCase()}
         </p>
         <Xarrow

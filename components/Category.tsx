@@ -1,9 +1,7 @@
-import Link from 'next/link';
 import cx from 'classnames';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { CategoryType } from '../types/shared';
 import Xarrow from 'react-xarrows';
-import Item from './Item';
 
 interface CategoryProps {
   category: CategoryType;
@@ -29,7 +27,7 @@ export default function Category({
             setCurrentCategory(category.name);
           }
         }}
-        className={cx('text-xl mb-12 lg:mb-0 pr-2 font-extrabold', {})}
+        className='text-base sm:text-xl mb-12 lg:mb-0 pr-2 font-extrabold cursor-pointer'
       >
         {name.toUpperCase()}
       </h1>

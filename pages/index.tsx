@@ -1,4 +1,3 @@
-import cx from 'classnames';
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import { getHomePage } from '../lib/contentful/pages/home';
@@ -23,7 +22,7 @@ export default function Home({
       <div className='lg:grid grid-cols-[2fr,3fr] gap-20'>
         <div className='m-4 mt-20 w-1/2 lg:w-full grid grid-cols-12 grid-rows-[1fr,1fr,1fr,1fr,1fr,1fr,1fr] lg:h-[calc(100vh-10rem)]'>
           {allCategories.map((category, idx) => (
-            <div key={idx} className='category cursor-pointer'>
+            <div key={idx} className='category'>
               {(currentCategory === null ||
                 currentCategory === category.name) && (
                 <Category
