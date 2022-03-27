@@ -18,7 +18,7 @@ export default function Category({
 
   return (
     <div className='relative mb-4'>
-      <div id={`category${name}`} className='absolute left-20 top-4'></div>
+      <div id={`category${name}`} className='absolute left-12 top-4'></div>
       <h1
         onClick={() => {
           if (currentCategory === category.name) {
