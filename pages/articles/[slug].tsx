@@ -5,7 +5,6 @@ import { getArticlePageSingle } from '../../lib/contentful/pages/article';
 import { getArticlePathsToPreRender } from '../../lib/contentful/paths';
 import { renderRichTextWithImages } from '../../lib/rich-text';
 import { ArticleType } from '../../types/shared';
-import Xarrow from 'react-xarrows';
 
 interface ArticleProps {
   article: ArticleType;

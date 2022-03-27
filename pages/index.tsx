@@ -32,7 +32,7 @@ export default function Home({
           </ArcherElement>
         </div>
         <div className='lg:grid grid-cols-[2fr,3fr] gap-20'>
-          <div className='pt-14 w-1/2 lg:w-full grid grid-cols-12 grid-rows-[1fr,1fr,1fr,1fr,1fr,1fr,1fr] lg:h-[calc(100vh-10rem)]'>
+          <div className='p-4 pt-28 w-1/2 lg:w-full grid grid-cols-12 grid-rows-[1fr,1fr,1fr,1fr,1fr,1fr,1fr] lg:h-[calc(100vh-10rem)]'>
             {allCategories.map((category, idx) => (
               <div key={idx} className='category'>
                 {(currentCategory === null ||
