@@ -23,11 +23,13 @@ export default function Artist({ artist, image }: ArtistProps) {
         endMarker={false}
         svgContainerStyle={{ zIndex: -1 }}
       >
-        <ArcherElement id='artist-name'>
-          <h1 className='text-xl mb-8 inline-block'>{name.toUpperCase()}</h1>
-        </ArcherElement>
         <div className='grid md:grid-cols-2 gap-8'>
           <div>
+            <ArcherElement id='artist-name'>
+              <h1 className='text-xl mb-8 inline-block'>
+                {name.toUpperCase()}
+              </h1>
+            </ArcherElement>
             <div className='flex flex-wrap justify-evenly max-w-lg'>
               {linkedFrom.articleCollection.items.map(
                 ({ title, slug }, idx) => (
