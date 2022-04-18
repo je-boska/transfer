@@ -18,7 +18,7 @@ export default function Article({ article, media }: ArticleProps) {
     <>
       <div className='flex flex-col md:flex-row'>
         <div className='md:w-1/2 lg:w-[60%] md:h-screen md:overflow-scroll p-4 pt-16 border-r md:border-black'>
-          <article className='the-container max-w-xl mx-auto'>
+          <article className='max-w-xl mx-auto'>
             <h1 className='title text-xl mb-2'>{title.toUpperCase()}</h1>
             <div className='mb-12'>
               {artistsCollection.items.map(({ name, slug }, idx) => (
