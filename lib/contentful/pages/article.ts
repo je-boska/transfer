@@ -1,5 +1,5 @@
 import { graphql } from '..';
-import { ArticleType, Asset } from '../../../types/shared';
+import { ArticleType } from '../../../types/shared';
 import { extractCollectionItem, parseLocaleName } from '../../../util';
 
 export async function getArticlePageSingle(slug: string, locale: string) {
