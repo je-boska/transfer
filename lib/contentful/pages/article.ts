@@ -1,5 +1,5 @@
 import { graphql } from '..';
-import { ArticleType } from '../../../types/shared';
+import { ArticleType, Asset } from '../../../types/shared';
 import { extractCollectionItem, parseLocaleName } from '../../../util';
 
 export async function getArticlePageSingle(slug: string, locale: string) {
@@ -30,19 +30,6 @@ export async function getArticlePageSingle(slug: string, locale: string) {
               }
             }
           }
-          mediaCollection {
-            items {
-              sys {
-                id
-              }
-              title
-              description
-              url
-              width
-              height
-              contentType
-            }
-          }
           categoriesCollection {
             items {
               name
@@ -57,6 +44,27 @@ export async function getArticlePageSingle(slug: string, locale: string) {
           }
         }
       }
+      media: articleCollection(
+        where: { slug: $slug }
+        limit: 1
+        locale: "en-US"
+      ) {
+        items {
+          mediaCollection {
+            items {
+              sys {
+                id
+              }
+              title
+              description
+              url
+              width
+              height
+              contentType
+            }
+          }
+        }
+      }
     }
   `;
   const data = await graphql(ArticlePageSingleQuery, {
@@ -65,5 +73,7 @@ export async function getArticlePageSingle(slug: string, locale: string) {
 
   return {
     article: extractCollectionItem<ArticleType>(data, 'articleCollection'),
+    media: extractCollectionItem<ArticleType>(data, 'media').mediaCollection
+      .items,
   };
 }
