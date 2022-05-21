@@ -1,9 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply bg-transferGray;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Neue-Haas-Grotesk', -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
 }
 
 a {
@@ -13,4 +22,138 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+/* Fonts */
+
+@font-face {
+  font-family: 'Neue-Haas-Grotesk';
+  src: url('/fonts/NHaasGroteskTXPro-55Rg.ttf') format('truetype');
+}
+
+/* Rich text styles */
+
+.rich-text h1 {
+  @apply text-6xl font-bold mb-6;
+}
+
+.rich-text h2 {
+  @apply text-4xl font-bold mb-6;
+}
+
+.rich-text h3 {
+  @apply text-3xl font-bold mb-6;
+}
+
+.rich-text h4 {
+  @apply text-2xl font-bold mb-6;
+}
+
+.rich-text h5 {
+  @apply text-xl font-bold mb-6;
+}
+
+.rich-text h6 {
+  @apply text-lg font-bold mb-6;
+}
+
+.rich-text p {
+  @apply text-base font-sans mb-6;
+}
+
+.rich-text ul {
+  @apply list-disc ml-6 mb-6;
+}
+
+.rich-text ul p {
+  @apply mb-0;
+}
+
+.rich-text a {
+  @apply text-blue-500;
+}
+
+.rich-text video,
+.rich-text img {
+  @apply mb-6;
+}
+
+.rich-text hr {
+  @apply mb-6 border-black;
+}
+
+/* Category placement */
+
+.category {
+  @apply whitespace-nowrap;
+}
+
+.category:first-of-type {
+  @apply col-start-12 row-start-3;
+}
+
+.category:nth-of-type(2) {
+  @apply col-start-5 row-start-4;
+}
+
+.category:nth-of-type(3) {
+  @apply col-start-10 row-start-5;
+}
+
+.category:nth-of-type(4) {
+  @apply col-start-2 row-start-2;
+}
+
+.category:nth-of-type(5) {
+  @apply col-start-3 row-start-6;
+}
+
+.category:nth-of-type(6) {
+  @apply col-start-7 row-start-7;
+}
+
+/* Item placement */
+
+.item:first-of-type {
+  @apply mt-3;
+}
+
+.item:nth-of-type(2) {
+  @apply mt-20;
+}
+
+.item:nth-of-type(3) {
+  @apply mt-8;
+}
+
+.item:nth-of-type(4) {
+  @apply mt-0;
+}
+
+.item:nth-of-type(5) {
+  @apply mt-24;
+}
+
+.item:nth-of-type(6) {
+  @apply mt-5;
+}
+
+.item:nth-of-type(7) {
+  @apply mt-14;
+}
+
+.item:nth-of-type(8) {
+  @apply mt-3;
+}
+
+.item:nth-of-type(9) {
+  @apply mt-28;
+}
+
+.item:nth-of-type(10) {
+  @apply mt-0;
+}
+
+.item:nth-of-type(11) {
+  @apply mt-8;
 }
