@@ -24,13 +24,13 @@ export default function Artist({ artist, image }: ArtistProps) {
         svgContainerStyle={{ zIndex: -1 }}
       >
         <div className='grid md:grid-cols-2 gap-8'>
-          <div>
+          <div className='order-1 md:order-0'>
             <ArcherElement id='artist-name'>
               <h1 className='text-xl mb-8 inline-block'>
                 {name.toUpperCase()}
               </h1>
             </ArcherElement>
-            <div className='flex flex-wrap justify-evenly max-w-lg'>
+            <div className='flex flex-wrap justify-evenly max-w-lg max-h-[50vh] mb-20'>
               {linkedFrom.articleCollection.items.map(
                 ({ title, slug }, idx) => (
                   <Link key={idx} href={`/articles/${slug}`} passHref>
@@ -52,8 +52,13 @@ export default function Artist({ artist, image }: ArtistProps) {
                 )
               )}
             </div>
+            {bio && (
+              <div className='rich-text mb-20 max-w-lg'>
+                {renderRichTextWithImages(bio)}
+              </div>
+            )}
           </div>
-          <div className='relative w-full mb-8'>
+          <div className='order-0 md:order-1 relative w-full mb-8'>
             <div className='mb-4'>
               {image && (
                 <Image
@@ -65,11 +70,6 @@ export default function Artist({ artist, image }: ArtistProps) {
                 />
               )}
             </div>
-            {bio && (
-              <div className='rich-text mb-20'>
-                {renderRichTextWithImages(bio)}
-              </div>
-            )}
           </div>
         </div>
       </ArcherContainer>
