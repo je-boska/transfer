@@ -1,10 +1,12 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import ReactPlayer from 'react-player';
 import { getArticlePageSingle } from '../../lib/contentful/pages/article';
 import { getArticlePathsToPreRender } from '../../lib/contentful/paths';
 import { renderRichTextWithImages } from '../../lib/rich-text';
 import { ArticleType, Asset } from '../../types/shared';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import ReactPlayer from 'react-player';
+import Meta from '../../components/Meta';
 
 interface ArticleProps {
   article: ArticleType;
@@ -16,6 +18,7 @@ export default function Article({ article, media }: ArticleProps) {
 
   return (
     <>
+      <Meta title={title + ' | TRANSFER'} />
       <div className='flex flex-col md:flex-row'>
         <div className='md:w-1/2 lg:w-[60%] md:h-screen md:overflow-scroll p-4 pt-16 border-r md:border-black'>
           <article className='max-w-xl mx-auto'>
