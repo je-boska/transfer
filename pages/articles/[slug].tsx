@@ -63,6 +63,7 @@ export default function Article({ article, media }: ArticleProps) {
                           layout='responsive'
                           width={width}
                           height={height}
+                          quality={50}
                         />
                       </a>
                     </Link>

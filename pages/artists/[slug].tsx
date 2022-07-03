@@ -70,6 +70,7 @@ export default function Artist({ artist, image }: ArtistProps) {
                     layout='intrinsic'
                     width={image.width}
                     height={image.height}
+                    quality={50}
                   />
                 )}
               </div>
