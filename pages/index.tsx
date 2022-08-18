@@ -1,11 +1,12 @@
 import { InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
 import { getHomePage } from '../lib/contentful/pages/home';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Category from '../components/Category';
 import { useState } from 'react';
-import ItemBox from '../components/ItemBox';
 import { ArcherContainer, ArcherElement } from 'react-archer';
+
+import Category from '../components/Category';
+import ItemBox from '../components/ItemBox';
+import Meta from '../components/Meta';
 
 export default function Home({
   allCategories,
@@ -13,12 +14,8 @@ export default function Home({
   const [currentCategory, setCurrentCategory] = useState<string | null>(null);
 
   return (
-    <div>
-      <Head>
-        <title>TRANSFER</title>
-        <meta name='description' content='Transfer' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
+    <>
+      <Meta title='TRANSFER' />
       <ArcherContainer
         strokeColor='lightgray'
         strokeWidth={1}
@@ -55,7 +52,7 @@ export default function Home({
           />
         </div>
       </ArcherContainer>
-    </div>
+    </>
   );
 }
 
