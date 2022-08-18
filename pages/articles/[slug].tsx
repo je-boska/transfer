@@ -25,7 +25,7 @@ export default function Article({ article, media }: ArticleProps) {
             <h1 className='title text-xl mb-2'>{title.toUpperCase()}</h1>
             <div className='mb-12'>
               {artistsCollection.items.map(({ name, slug }, idx) => (
-                <p key={idx} className='font-bold text-right'>
+                <p key={idx} className='font-bold text-right hover:italic'>
                   <Link href={`/artists/${slug}`} passHref>
                     <span className='cursor-pointer'>{name}</span>
                   </Link>

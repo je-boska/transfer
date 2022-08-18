@@ -17,7 +17,7 @@ export default function Artist({ artist, image }: ArtistProps) {
 
   return (
     <>
-      <Meta title={name + '| TRANSFER'} />
+      <Meta title={name + ' | TRANSFER'} />
       <div className='container mx-auto p-8 mt-10'>
         <ArcherContainer
           strokeColor='lightgray'
@@ -48,7 +48,9 @@ export default function Artist({ artist, image }: ArtistProps) {
                             },
                           ]}
                         >
-                          <h2 className='font-bold cursor-pointer'>{title}</h2>
+                          <h2 className='font-bold cursor-pointer hover:italic'>
+                            {title}
+                          </h2>
                         </ArcherElement>
                       </div>
                     </Link>

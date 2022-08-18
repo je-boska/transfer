@@ -16,7 +16,9 @@ const Item = ({ title, link, categoryName, idx }) => {
             },
           ]}
         >
-          <p className='font-bold pl-2 cursor-pointer'>{title.toUpperCase()}</p>
+          <p className='font-bold pl-2 cursor-pointer hover:italic'>
+            {title.toUpperCase()}
+          </p>
         </ArcherElement>
       </div>
     </Link>
