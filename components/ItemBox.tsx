@@ -19,7 +19,7 @@ const ItemBox = ({ category }) => {
                   idx={idx}
                   title={title}
                   link={`/articles/${slug}`}
-                  categoryName={`category${category.name}`}
+                  categorySlug={`category${category.slug}`}
                 />
               )
             )}
@@ -30,7 +30,7 @@ const ItemBox = ({ category }) => {
                   idx={idx + category.linkedFrom.articleCollection.items.length}
                   title={title}
                   link={`/artists/${slug}`}
-                  categoryName={`category${category.name}`}
+                  categorySlug={`category${category.slug}`}
                 />
               )
             )}

@@ -20,6 +20,7 @@ export type ErrorPayload = {
 
 export type CategoryType = {
   name: string;
+  slug: string;
   description: string;
   linkedFrom: {
     articleCollection: {
