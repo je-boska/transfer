@@ -21,7 +21,10 @@ export default function Header() {
     >
       <div className='flex justify-between m-4 text-lg sm:text-xl'>
         {pathname === '/' ? (
-          <h1 className='w-1/2 font-extrabold'>
+          <h1
+            className='w-1/2 font-extrabold cursor-pointer'
+            onClick={() => router.push('/', undefined, { shallow: true })}
+          >
             {t('transfer').toUpperCase()}
           </h1>
         ) : (
