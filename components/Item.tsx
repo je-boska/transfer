@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import React from 'react';
 import { ArcherElement } from 'react-archer';
 
-const Item = ({ title, link, categoryName, idx }) => {
+const Item = ({ title, link, categorySlug, idx }) => {
   return (
     <Link key={idx} href={link} passHref>
       <div className='item mb-6'>
@@ -10,7 +9,7 @@ const Item = ({ title, link, categoryName, idx }) => {
           id={`item${idx}`}
           relations={[
             {
-              targetId: categoryName,
+              targetId: categorySlug,
               targetAnchor: 'middle',
               sourceAnchor: 'middle',
             },

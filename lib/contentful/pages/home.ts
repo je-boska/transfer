@@ -1,6 +1,6 @@
-import { graphql } from "..";
-import { CategoryType } from "../../../types/shared";
-import { extractCollection, parseLocaleName } from "../../../util";
+import { graphql } from '..';
+import { CategoryType } from '../../../types/shared';
+import { extractCollection, parseLocaleName } from '../../../util';
 
 export async function getHomePage(locale) {
   const parsedLocale = parseLocaleName(locale);
@@ -10,6 +10,7 @@ export async function getHomePage(locale) {
       categoryCollection(locale: $locale, limit: 50) {
         items {
           name
+          slug
           description
           linkedFrom {
             articleCollection {
@@ -33,5 +34,5 @@ export async function getHomePage(locale) {
     variables: { locale: parsedLocale },
   });
 
-  return extractCollection<CategoryType>(data, "categoryCollection");
+  return extractCollection<CategoryType>(data, 'categoryCollection');
 }
