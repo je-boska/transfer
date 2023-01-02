@@ -131,23 +131,23 @@ a {
 }
 
 .item:nth-of-type(5) {
-  @apply mt-24;
+  @apply mt-2 ml-8 md:mt-24 md:ml-0;
 }
 
 .item:nth-of-type(6) {
-  @apply mt-5;
+  @apply mt-5 mr-28 md:mr-0;
 }
 
 .item:nth-of-type(7) {
-  @apply mt-14;
+  @apply mt-14 mr-20 md:mr-0;
 }
 
 .item:nth-of-type(8) {
-  @apply mt-3;
+  @apply mt-3 ml-12 md:ml-0;
 }
 
 .item:nth-of-type(9) {
-  @apply mt-28;
+  @apply mt-28 mr-14 md:ml-0;
 }
 
 .item:nth-of-type(10) {
@@ -155,5 +155,5 @@ a {
 }
 
 .item:nth-of-type(11) {
-  @apply mt-8;
+  @apply mt-8 ml-auto md:ml-0;
 }
