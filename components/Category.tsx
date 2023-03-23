@@ -39,7 +39,7 @@ export default function Category({ category, currentCategory }: CategoryProps) {
               setCategoryQuery(category.slug);
             }
           }}
-          className='text-base sm:text-xl mb-12 lg:mb-0 pr-2 w-24 font-extrabold cursor-pointer hover:italic'
+          className='text-base sm:text-xl mb-12 lg:mb-0 pr-2 w-24 font-extrabold hover:italic cursor-link'
         >
           {name.toUpperCase()}
         </h1>

@@ -48,7 +48,7 @@ export default function Artist({ artist, image }: ArtistProps) {
                             },
                           ]}
                         >
-                          <h2 className='font-bold cursor-pointer hover:italic'>
+                          <h2 className='font-bold cursor-link hover:italic'>
                             {title}
                           </h2>
                         </ArcherElement>

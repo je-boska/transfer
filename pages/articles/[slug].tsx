@@ -27,7 +27,7 @@ export default function Article({ article, media }: ArticleProps) {
               {artistsCollection.items.map(({ name, slug }, idx) => (
                 <p key={idx} className='font-bold text-right hover:italic'>
                   <Link href={`/artists/${slug}`} passHref>
-                    <span className='cursor-pointer'>{name}</span>
+                    <span className='cursor-link'>{name}</span>
                   </Link>
                 </p>
               ))}
@@ -54,9 +54,9 @@ export default function Article({ article, media }: ArticleProps) {
             media.map(({ url, width, height, contentType }, idx) => {
               if (contentType.includes('image')) {
                 return (
-                  <div key={idx} className='relative cursor-pointer'>
+                  <div key={idx} className='relative'>
                     <Link href={url} passHref>
-                      <a target='_blank'>
+                      <a target='_blank' className='cursor-link'>
                         <Image
                           src={url}
                           alt={title}
