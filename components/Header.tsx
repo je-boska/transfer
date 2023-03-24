@@ -19,7 +19,7 @@ export default function Header() {
         }
       )}
     >
-      <div className='flex justify-between m-4 text-lg sm:text-xl'>
+      <div className='flex justify-between m-2 pt-2 pl-2 text-lg sm:text-xl'>
         {pathname === '/' ? (
           <h1
             className='w-1/2 font-extrabold cursor-link'
@@ -33,7 +33,7 @@ export default function Header() {
               ←
             </button>
             <button
-              className='mb-0.5 ml-2 text-2xl cursor-link'
+              className='pb-0.5 px-2 text-2xl cursor-link'
               onClick={() => router.push('/')}
             >
               ⌂
