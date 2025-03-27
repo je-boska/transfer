@@ -167,3 +167,19 @@ a:focus {
 .item:nth-of-type(11) {
   @apply mt-8 ml-auto md:ml-0;
 }
+
+.item:nth-of-type(12) {
+  @apply ml-auto md:ml-0;
+}
+
+.item:nth-of-type(13) {
+  @apply mt-5 ml-3;
+}
+
+.item:nth-of-type(14) {
+  @apply mt-10 ml-0;
+}
+
+.item:nth-of-type(15) {
+  @apply mt-20 ml-6;
+}
