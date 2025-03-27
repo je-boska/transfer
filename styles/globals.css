@@ -103,7 +103,7 @@ a:focus {
 }
 
 .category:nth-of-type(3) {
-  @apply col-start-10 row-start-5;
+  @apply col-start-12 row-start-5;
 }
 
 .category:nth-of-type(4) {
@@ -111,11 +111,15 @@ a:focus {
 }
 
 .category:nth-of-type(5) {
-  @apply col-start-3 row-start-6;
+  @apply col-start-1 row-start-6;
 }
 
 .category:nth-of-type(6) {
   @apply col-start-7 row-start-7;
+}
+
+.category:nth-of-type(7) {
+  @apply col-start-6 row-start-1;
 }
 
 /* Item placement */
